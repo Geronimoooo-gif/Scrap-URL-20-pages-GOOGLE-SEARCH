@@ -104,210 +104,228 @@ def main():
         return
     
     # Liste des villes
-    default_cities = """Paris  
-Marseille  
-Lyon  
-Toulouse  
-Nice  
-Nantes  
-Strasbourg  
-Montpellier  
-Bordeaux  
-Lille  
-Rennes  
-Reims  
-Saint-Etienne  
-Toulon  
-Le Havre  
-Grenoble  
-Dijon  
-Angers  
-Nimes  
-Villeurbanne  
-Clermont-Ferrand  
-Saint-Denis  
-Le Mans  
-Aix-en-Provence  
-Brest  
-Tours  
-Amiens  
-Limoges  
-Annecy  
-Perpignan  
-Boulogne-Billancourt  
-Metz  
-Besancon  
-Orleans  
-Saint-Denis  
-Rouen  
-Argenteuil  
-Mulhouse  
-Montreuil  
-Caen  
-Nancy  
-Saint-Paul  
-Roubaix  
-Tourcoing  
-Nanterre  
-Vitry-sur-Seine  
-Avignon  
-Creteil  
-Poitiers  
-Dunkerque  
-Asnieres-sur-Seine  
-Courbevoie  
-Versailles  
-Colombes  
-Fort-de-France  
-Aulnay-sous-Bois  
-Saint-Pierre  
-Rueil-Malmaison  
-Pau  
-Aubervilliers  
-Champigny-sur-Marne  
-Le Tampon  
-Antibes  
-Saint-Maur-des-Fosses  
-Cannes  
-Drancy  
-Merignac  
-Saint-Nazaire  
-Colmar  
-Issy-les-Moulineaux  
-Noisy-le-Grand  
-Evry-Courcouronnes  
-Levallois-Perret  
-Troyes  
-Neuilly-sur-Seine  
-Sarcelles  
-Venissieux  
-Clichy  
-Pessac  
-Ivry-sur-Seine  
-Cergy  
-Quimper  
-La Rochelle  
-Beziers  
-Ajaccio  
-Saint-Quentin  
-Niort  
-Villejuif  
-Hyeres  
-Pantin  
-Chambery  
-Le Blanc-Mesnil  
-Lorient  
-Les Abymes  
-Montauban  
-Sainte-Genevieve-des-Bois  
-Suresnes  
-Meaux  
-Valence  
-Beauvais  
-Cholet  
-Chelles  
-Bondy  
-Frejus  
-Clamart  
-Narbonne  
-Bourg-en-Bresse  
-Fontenay-sous-Bois  
-Bayonne  
-Sevran  
-Antony  
-Maisons-Alfort  
-La Seyne-sur-Mer  
-Epinay-sur-Seine  
-Montrouge  
-Saint-Herblain  
-Calais  
-Vincennes  
-Macon  
-Villepinte  
-Martigues  
-Bobigny  
-Cherbourg-en-Cotentin  
-Vannes  
-Massy  
-Brive-la-Gaillarde  
-Arles  
-Corbeil-Essonnes  
-Saint-Andre  
-Saint-Ouen-sur-Seine  
-Albi  
-Belfort  
-Evreux  
-La Roche-sur-Yon  
-Saint-Malo  
-Bagneux  
-Chateauroux  
-Noisy-le-Sec  
-Salon-de-Provence  
-Le Cannet  
-Vaulx-en-Velin  
-Livry-Gargan  
-Angouleme  
-Sete  
-Puteaux  
-Thionville  
-Rosny-sous-Bois  
-Saint-Laurent-du-Maroni  
-Alfortville  
-Istres  
-Gennevilliers  
-Wattrelos  
-Talence  
-Blois  
-Tarbes  
-Castres  
-Garges-les-Gonesse  
-Saint-Brieuc  
-Arras  
-Douai  
-Compiegne  
-Melun  
-Reze  
-Saint-Chamond  
-Bourgoin-Jallieu  
-Gap  
-Montelimar  
-Thonon-les-Bains  
-Draguignan  
-Chartres  
-Joue-les-Tours  
-Saint-Martin-dHeres  
-Villefranche-sur-Saone  
-Chalon-sur-Saone  
-Mantes-la-Jolie  
-Colomiers  
-Anglet  
-Pontault-Combault  
-Poissy  
-Savigny-sur-Orge  
-Bagnolet  
-Lievin  
-Nevers  
-Gagny  
-Le Perreux-sur-Marne  
-Stains  
-Chalons-en-Champagne  
-Conflans-Sainte-Honorine  
-Montlucon  
-Palaiseau  
-Laval  
-Saint-Priest  
-LHay-les-Roses  
-Brunoy  
-Chatillon  
-Sainte-Marie  
-Bastia  
-Lens  
-Chambery  
-Le Lamentin  
-Saint-Benoit  
-Saint-Joseph  
-Le Port  
-Saint-Leu  
+    default_cities = """Paris
+Paris 1er arrondissement
+Paris 2e arrondissement
+Paris 3e arrondissement
+Paris 4e arrondissement
+Paris 5e arrondissement
+Paris 6e arrondissement
+Paris 7e arrondissement
+Paris 8e arrondissement
+Paris 9e arrondissement
+Paris 10e arrondissement
+Paris 11e arrondissement
+Paris 12e arrondissement
+Paris 13e arrondissement
+Paris 14e arrondissement
+Paris 15e arrondissement
+Paris 16e arrondissement
+Paris 17e arrondissement
+Paris 18e arrondissement
+Paris 19e arrondissement
+Paris 20e arrondissement
+Marseille
+Lyon
+Toulouse
+Nice
+Nantes
+Strasbourg
+Montpellier
+Bordeaux
+Lille
+Rennes
+Reims
+Saint-Etienne
+Toulon
+Le Havre
+Grenoble
+Dijon
+Angers
+Nimes
+Villeurbanne
+Clermont-Ferrand
+Saint-Denis
+Le Mans
+Aix-en-Provence
+Brest
+Tours
+Amiens
+Limoges
+Annecy
+Perpignan
+Boulogne-Billancourt
+Metz
+Besancon
+Orleans
+Saint-Denis
+Rouen
+Argenteuil
+Mulhouse
+Montreuil
+Caen
+Nancy
+Saint-Paul
+Roubaix
+Tourcoing
+Nanterre
+Vitry-sur-Seine
+Avignon
+Creteil
+Poitiers
+Dunkerque
+Asnieres-sur-Seine
+Courbevoie
+Versailles
+Colombes
+Fort-de-France
+Aulnay-sous-Bois
+Saint-Pierre
+Rueil-Malmaison
+Pau
+Aubervilliers
+Champigny-sur-Marne
+Le Tampon
+Antibes
+Saint-Maur-des-Fosses
+Cannes
+Drancy
+Merignac
+Saint-Nazaire
+Colmar
+Issy-les-Moulineaux
+Noisy-le-Grand
+Evry-Courcouronnes
+Levallois-Perret
+Troyes
+Neuilly-sur-Seine
+Sarcelles
+Venissieux
+Clichy
+Pessac
+Ivry-sur-Seine
+Cergy
+Quimper
+La Rochelle
+Beziers
+Ajaccio
+Saint-Quentin
+Niort
+Villejuif
+Hyeres
+Pantin
+Chambery
+Le Blanc-Mesnil
+Lorient
+Les Abymes
+Montauban
+Sainte-Genevieve-des-Bois
+Suresnes
+Meaux
+Valence
+Beauvais
+Cholet
+Chelles
+Bondy
+Frejus
+Clamart
+Narbonne
+Bourg-en-Bresse
+Fontenay-sous-Bois
+Bayonne
+Sevran
+Antony
+Maisons-Alfort
+La Seyne-sur-Mer
+Epinay-sur-Seine
+Montrouge
+Saint-Herblain
+Calais
+Vincennes
+Macon
+Villepinte
+Martigues
+Bobigny
+Cherbourg-en-Cotentin
+Vannes
+Massy
+Brive-la-Gaillarde
+Arles
+Corbeil-Essonnes
+Saint-Andre
+Saint-Ouen-sur-Seine
+Albi
+Belfort
+Evreux
+La Roche-sur-Yon
+Saint-Malo
+Bagneux
+Chateauroux
+Noisy-le-Sec
+Salon-de-Provence
+Le Cannet
+Vaulx-en-Velin
+Livry-Gargan
+Angouleme
+Sete
+Puteaux
+Thionville
+Rosny-sous-Bois
+Saint-Laurent-du-Maroni
+Alfortville
+Istres
+Gennevilliers
+Wattrelos
+Talence
+Blois
+Tarbes
+Castres
+Garges-les-Gonesse
+Saint-Brieuc
+Arras
+Douai
+Compiegne
+Melun
+Reze
+Saint-Chamond
+Bourgoin-Jallieu
+Gap
+Montelimar
+Thonon-les-Bains
+Draguignan
+Chartres
+Joue-les-Tours
+Saint-Martin-dHeres
+Villefranche-sur-Saone
+Chalon-sur-Saone
+Mantes-la-Jolie
+Colomiers
+Anglet
+Pontault-Combault
+Poissy
+Savigny-sur-Orge
+Bagnolet
+Lievin
+Nevers
+Gagny
+Le Perreux-sur-Marne
+Stains
+Chalons-en-Champagne
+Conflans-Sainte-Honorine
+Montlucon
+Palaiseau
+Laval
+Saint-Priest
+LHay-les-Roses
+Brunoy
+Chatillon
+Sainte-Marie
+Bastia
+Lens
+Chambery
+Saint-Benoit
+Le Port
+Saint-Leu
 Noumea"""
     
     # Interface utilisateur
