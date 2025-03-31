@@ -88,13 +88,20 @@ def scrape_google_urls(query, max_results=200, progress_bar=None):
     logger.info(f"Scraping terminé. Nombre total de résultats: {len(results)}")
     return results[:max_results]
 
-def create_excel_with_multiple_sheets(dataframes, filename):
-    """Crée un fichier Excel avec plusieurs onglets"""
-    output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-        for sheet_name, df in dataframes.items():
-            df.to_excel(writer, sheet_name=sheet_name, index=False)
-    return output.getvalue()
+def create_csv_files(dataframes):
+    """Crée des fichiers CSV pour chaque dataframe et les stocke en mémoire."""
+    output_files = {}
+    
+    for sheet_name, df in dataframes.items():
+        clean_sheet_name = sheet_name.replace(" ", "_")[:31] + ".csv"
+        
+        output = io.BytesIO()
+        df.to_csv(output, index=False, encoding='utf-8')
+        output.seek(0)
+        
+        output_files[clean_sheet_name] = output
+    
+    return output_files
 
 def main():
     st.title("🔍 Scraper Google Search via ValueSerp")
@@ -105,7 +112,7 @@ def main():
     
     # Liste des villes
     default_cities = """Paris
-Paris 1er arrondissement
+Paris 1er arrondissemeeent2
 Paris 2e arrondissement
 Paris 3e arrondissement
 Paris 4e arrondissement
@@ -351,7 +358,7 @@ Noumea"""
         max_results = st.select_slider(
             "Nombre de résultats à récupérer par ville",
             options=[10, 20, 30, 50, 100, 200],
-            value=100,
+            value=200,
             help="Choisissez le nombre de résultats Google à récupérer par ville"
         )
         
@@ -377,47 +384,36 @@ Noumea"""
                 return
             
             progress_bar = st.progress(0)
-            status_text = st.empty()
-            
-            # Dictionnaire pour stocker les résultats par ville
             all_results = {}
             
             for i, city in enumerate(cities_list):
                 full_query = f"{query} {city}"
-                status_text.text(f"Recherche en cours pour : {full_query}")
+                st.text(f"Recherche en cours pour : {full_query}")
                 
                 data = scrape_google_urls(full_query, max_results, progress_bar)
                 if data:
-                    df = pd.DataFrame(data)[["Position", "URL"]]
+                    df = pd.DataFrame(data)
                     all_results[full_query] = df
                 
                 progress = (i + 1) / len(cities_list)
                 progress_bar.progress(progress)
-                
+            
             if all_results:
                 st.success(f"Recherches terminées ! Résultats trouvés pour {len(all_results)} villes.")
                 
-                # Création du fichier Excel
-                excel_data = create_excel_with_multiple_sheets(all_results, "resultats_recherche.xlsx")
+                csv_files = create_csv_files(all_results)
                 
-                # Bouton de téléchargement
-                st.download_button(
-                    label="📥 Télécharger les résultats (Excel)",
-                    data=excel_data,
-                    file_name=f"recherche_{query}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
+                for filename, csv_buffer in csv_files.items():
+                    st.download_button(
+                        label=f"📥 Télécharger {filename}",
+                        data=csv_buffer,
+                        file_name=filename,
+                        mime="text/csv"
+                    )
                 
-                # Affichage des aperçus
                 for query_city, df in all_results.items():
                     with st.expander(f"Aperçu des résultats pour : {query_city}"):
                         st.dataframe(df)
-                
-                # Statistiques dans la sidebar
-                st.sidebar.write("---")
-                st.sidebar.write("Statistiques de la recherche")
-                st.sidebar.write(f"Villes traitées: {len(all_results)}")
-                st.sidebar.write(f"Coût réel: ${(total_requests * cost_per_request):.3f}")
             else:
                 st.error("Aucun résultat trouvé.")
 
